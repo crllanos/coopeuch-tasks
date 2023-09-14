@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -21,6 +22,7 @@ public class TaskService implements ITaskService {
 
     @Override
     public TaskEntity createTask(TaskEntity task) {
+        task.setCreation(LocalDateTime.now());
         return taskRepository.save(task);
     }
 
