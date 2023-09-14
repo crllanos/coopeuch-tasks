@@ -1,19 +1,31 @@
-# Getting Started
+# Task Coopeuch
 
 ### Reference Documentation
-For further reference, please consider the following sections:
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.7.15/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.7.15/maven-plugin/reference/html/#build-image)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.7.15/reference/htmlsingle/index.html#web)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/2.7.15/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
+Listado de tasks
 
-### Guides
-The following guides illustrate how to use some features concretely:
+    curl -XGET 'http://localhost:8080/api/v1/task/'
 
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+Ver un task por ID.
+
+    curl -XGET 'http://localhost:8080/api/v1/task/2'
+
+Crear un nuevo task
+
+    curl -XPOST -H "Content-type: application/json" -d '{
+    "description": "Una descripcion",
+    "vigency": true
+    }' 'http://localhost:8080/api/v1/task/'
+
+Editar 
+
+    curl -XPUT -H "Content-type: application/json" -d '{
+    "description": "Nueva descripcion",
+    "vigency": false
+    }' 'http://localhost:8080/api/v1/task/2'
+
+
+Borrar un task
+     
+    curl -XDELETE 'http://localhost:8080/api/v1/task/1'
 

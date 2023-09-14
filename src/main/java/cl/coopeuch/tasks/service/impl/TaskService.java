@@ -50,7 +50,12 @@ public class TaskService implements ITaskService {
 
     @Override
     public void deleteTask(Long taskId) {
-        taskRepository.deleteById(taskId);
+        try {
+            TaskEntity del = this.readTask(taskId);
+            taskRepository.delete(del);
+        } catch (Exception e){
+
+        }
     }
 
 }
