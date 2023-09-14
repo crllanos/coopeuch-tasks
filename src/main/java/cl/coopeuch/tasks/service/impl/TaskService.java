@@ -43,7 +43,6 @@ public class TaskService implements ITaskService {
     public TaskEntity updateTask(Long taskId, TaskEntity newTask) {
         TaskEntity update = this.readTask(taskId);
         update.setDescription(newTask.getDescription());
-        update.setCreation(newTask.getCreation());
         update.setVigency(newTask.getVigency());
         return taskRepository.save(update);
     }

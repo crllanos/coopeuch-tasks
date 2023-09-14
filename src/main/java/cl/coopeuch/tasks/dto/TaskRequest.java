@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateTaskRequest {
+public class TaskRequest {
     private String description;
     private Boolean vigency;
 }
