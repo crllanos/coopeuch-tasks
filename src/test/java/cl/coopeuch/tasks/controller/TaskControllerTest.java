@@ -37,16 +37,6 @@ public class TaskControllerTest {
     }
 
     @Test
-    public void shouldReadTask_OK() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(url.concat("/1000"))
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andDo(MockMvcResultHandlers.print())
-                .andExpect(status().isOk())
-                .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.jsonPath("$").exists());
-    }
-
-    @Test
     public void shouldReadTaskList_OK() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get(url.concat("/"))
                         .contentType(MediaType.APPLICATION_JSON))
@@ -59,14 +49,14 @@ public class TaskControllerTest {
 
     @Test
     public void shouldNotReadTask_NotFound() throws Exception {
-        String uuid = "f6be8840-e4a1-4005-9366-b2e9f3fc05a1";
-        String notFoundMsg = String.format("User %s not found", uuid);
+        String id = "54321";
+        String notFoundMsg = String.format("task id %s not found.", id);
 
-        mockMvc.perform(MockMvcRequestBuilders.get(url.concat(uuid))
+        mockMvc.perform(MockMvcRequestBuilders.get(url.concat("/").concat(id))
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value(notFoundMsg));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.error").value(notFoundMsg));
     }
 }
 

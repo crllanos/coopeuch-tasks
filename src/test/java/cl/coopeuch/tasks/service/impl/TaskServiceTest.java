@@ -29,9 +29,9 @@ class TaskServiceTest {
 
         @Test
         public void shouldReadTask_Ok(){
-            when(taskRepository.findById(1L)).thenReturn(mockTaskEntity());
-            TaskEntity a = taskService.readTask(100L);
-            Assertions.assertNotNull(a);
+            when(taskRepository.findById(anyLong()))
+                    .thenReturn(mockTaskEntity());
+            Assertions.assertNotNull(taskService.readTask(100L));
         }
 
 
